@@ -1,17 +1,11 @@
 <?php
 
-namespace Bczopp\EventObjectCollection\ValueObjects;
+declare(strict_types=1);
 
-class AttendeeId implements ValueObject
+namespace Chumbatainment\EventObjectCollection\ValueObjects;
+
+use Chumbatainment\EventObjectCollection\ValueObject;
+
+readonly class AttendeeId extends Text
 {
-    public function __construct(
-        private string $value
-    )
-    {
-    }
-
-    public function getValue(): string
-    {
-        return $this->value;
-    }
 }

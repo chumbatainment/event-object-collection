@@ -1,18 +1,9 @@
 <?php
 
-namespace Bczopp\EventObjectCollection\ValueObjects;
+namespace Chumbatainment\EventObjectCollection\ValueObjects;
 
-class Age implements ValueObject
+use Chumbatainment\EventObjectCollection\ValueObject;
+
+readonly class Age extends Number
 {
-    public function __construct(
-        private int $value
-    )
-    {
-    }
-
-    public function getValue(): int
-    {
-        return $this->value;
-    }
-
 }

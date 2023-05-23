@@ -6,5 +6,5 @@ namespace Chumbatainment\EventObjectCollection\ValueObjects;
 
 use Chumbatainment\EventObjectCollection\ValueObject;
 
-readonly class EventName extends Text
+readonly class EventPriceTotal extends Number
 {}

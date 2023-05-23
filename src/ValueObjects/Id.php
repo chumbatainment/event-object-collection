@@ -1,17 +1,10 @@
 <?php
 
-namespace Bczopp\EventObjectCollection\ValueObjects;
+declare(strict_types=1);
 
-class Id implements ValueObject
-{
-    public function __construct(
-        private int $value
-    )
-    {
-    }
+namespace Chumbatainment\EventObjectCollection\ValueObjects;
 
-    public function getValue(): int
-    {
-        return $this->value;
-    }
-}
+use Chumbatainment\EventObjectCollection\ValueObject;
+
+readonly class Id extends Number
+{}

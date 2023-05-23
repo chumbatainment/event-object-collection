@@ -1,17 +1,10 @@
 <?php
 
-namespace Bczopp\EventObjectCollection\ValueObjects;
+declare(strict_types=1);
 
-class EventDescription implements ValueObject
-{
-    public function __construct(
-        private string $value
-    )
-    {
-    }
+namespace Chumbatainment\EventObjectCollection\ValueObjects;
 
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-}
+use Chumbatainment\EventObjectCollection\ValueObject;
+
+readonly class EventDescription extends Text
+{}

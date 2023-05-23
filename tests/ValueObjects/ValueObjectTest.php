@@ -1,40 +1,52 @@
 <?php
 
-namespace ValueObjects;
+namespace Chumbatainment\EventObjectCollection\Test\ValueObjects;
 
-use Bczopp\EventObjectCollection\ValueObjects\ValueObject;
+use Chumbatainment\EventObjectCollection\ValueObject;
 
 class ValueObjectTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @ParamProvider getClasses
-     */
-    public function testClasses(ValueObject $object, mixed $value): void
+    public function testClasses(): void
     {
-        $this->assertEquals($value, $object->getValue());
+        foreach($this->getClasses() as [$object, $value]){
+            var_dump(get_class($object));
+            $this->assertEquals($value, $object->getValue());
+        }
     }
 
     /**
-     * @return string[][]
+     * @return string[]
      */
-    public function getClasses(): array
+    public function getClasses(): iterable
     {
-        return array_map(
-            fn(string $name) => $this->createData($name),
-            array_filter(
-                scandir(__DIR__.'/../..src/ValueObjects'),
-                fn(string $name) => is_file($name)
-            )
-        );
+        $path = __DIR__.'/../../src/ValueObjects';
+        $namespace = 'Chumbatainment\EventObjectCollection\ValueObjects';
+        $files = scandir($path);
+        if($files){
+            $mapped = array_map(
+                fn(string $name) => $this->createData(
+                    sprintf('%s\\%s', $namespace, str_replace('.php', '', $name))
+                ),
+                array_filter(
+                    $files,
+                    fn(string $name) => is_file(sprintf('%s/%s',$path,$name))
+                )
+            );
+            foreach($mapped as $data){
+                yield $data;
+            }
+        }
     }
 
     /**
      * @return array<mixed>
      * @throws \ReflectionException
+     * @throws \Exception
      */
     private function createData(string $className): array
     {
         $reflection = new \ReflectionClass($className);
+        $this->assertContains(ValueObject::class, $reflection->getInterfaceNames());
         $constructorParameters = $reflection->getConstructor()->getParameters();
         $this->assertCount(1, $constructorParameters);
         $parameter = $constructorParameters[0];
