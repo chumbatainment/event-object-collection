@@ -1,11 +1,11 @@
 <?php
 
-namespace Chumbatainment\EventObjectCollection\Events;
+declare(strict_types=1);
 
-use Chumbatainment\EventObjectCollection\ValueObjects\LocationId;
+namespace Chumbatainment\EventObjectCollection\Events;
 
 interface TransportEvent extends Event
 {
-    public function getDepartureLocationId(): LocationId;
-    public function getDestinationLocationId(): LocationId;
+    public function getDepartureLocationId(): ?string;
+    public function getDestinationLocationId(): ?string;
 }

@@ -1,12 +1,11 @@
 <?php
 
-namespace Chumbatainment\EventObjectCollection\Events;
+declare(strict_types=1);
 
-use Chumbatainment\EventObjectCollection\ValueObjects\Age;
-use Chumbatainment\EventObjectCollection\ValueObjects\LocationId;
+namespace Chumbatainment\EventObjectCollection\Events;
 
 interface NightLifeEvent extends Event
 {
-    public function getLocationId(): LocationId;
-    public function getMinAge(): Age;
+    public function getLocationId(): ?string;
+    public function getMinAge(): ?int;
 }
