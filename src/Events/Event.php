@@ -17,11 +17,11 @@ interface Event
     /**
      * @return string[]
      */
-    public function getAttendees(): ?array;
+    public function getAttendeeIds(): ?array;
 
     public function getPrice(): ?int;
     public function getStart(): ?\DateTime;
     public function getEnd(): ?\DateTime;
-    public function getCustomParameter(): ?array;
+    public function getCustomParameters(): ?array;
 
 }

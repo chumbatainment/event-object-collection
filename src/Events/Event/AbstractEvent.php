@@ -11,12 +11,12 @@ abstract class AbstractEvent implements Event
     protected ?string $name = null;
     protected ?string $description = null;
     /** @var string[]|null  */
-    protected ?array $attendees = null;
+    protected ?array $attendeeIds = null;
     protected ?int $price = null;
     protected ?\DateTime $start = null;
     protected ?\DateTime $end = null;
     /** @var array<string|int, mixed>|null  */
-    protected ?array $customParameter = null;
+    protected ?array $customParameters = null;
 
     public function getId(): ?string
     {
@@ -56,17 +56,17 @@ abstract class AbstractEvent implements Event
         return $this;
     }
 
-    public function getAttendees(): ?array
+    public function getAttendeeIds(): ?array
     {
-        return $this->attendees;
+        return $this->attendeeIds;
     }
 
     /**
-     * @param string[] $attendees
+     * @param string[] $attendeeIds
      */
-    public function setAttendees(array $attendees): static
+    public function setAttendeeIds(array $attendeeIds): static
     {
-        $this->attendees = $attendees;
+        $this->attendeeIds = $attendeeIds;
         return $this;
     }
 
@@ -106,17 +106,17 @@ abstract class AbstractEvent implements Event
     /**
      * @return array<string|int, mixed>|null
      */
-    public function getCustomParameter(): ?array
+    public function getCustomParameters(): ?array
     {
-        return $this->customParameter;
+        return $this->customParameters;
     }
 
     /**
-     * @param array<string|int, mixed>|null $customParameter
+     * @param array<string|int, mixed>|null $customParameters
      */
-    public function setCustomParameter(?array $customParameter): static
+    public function setCustomParameters(?array $customParameters): static
     {
-        $this->customParameter = $customParameter;
+        $this->customParameters = $customParameters;
         return $this;
     }
 
