@@ -4,33 +4,24 @@ declare(strict_types=1);
 
 namespace Chumbatainment\EventObjectCollection\Events;
 
-use Chumbatainment\EventObjectCollection\ValueObjects\AttendeeId;
-use Chumbatainment\EventObjectCollection\ValueObjects\EventDescription;
-use Chumbatainment\EventObjectCollection\ValueObjects\EventId;
-use Chumbatainment\EventObjectCollection\ValueObjects\EventName;
-use Chumbatainment\EventObjectCollection\ValueObjects\EventPriceTotal;
-use Chumbatainment\EventObjectCollection\ValueObjects\EventType;
-use Chumbatainment\EventObjectCollection\ValueObjects\Id;
-
 interface Event
 {
-    public function getId(): Id;
+    public function getId(): ?string;
 
-    public function getEventId(): EventId;
+    public function getType(): ?string;
 
-    public function getType(): EventType;
+    public function getName(): ?string;
 
-    public function getName(): EventName;
-
-    public function getDescription(): EventDescription;
+    public function getDescription(): ?string;
 
     /**
-     * @return AttendeeId[]
+     * @return string[]
      */
-    public function getAttendees(): array;
+    public function getAttendeeIds(): ?array;
 
-    public function getPrice(): EventPriceTotal;
-    public function getStartDateTime(): \DateTime;
-    public function getEndDateTime(): \DateTime;
+    public function getPrice(): ?int;
+    public function getStart(): ?\DateTime;
+    public function getEnd(): ?\DateTime;
+    public function getCustomParameters(): ?array;
 
 }

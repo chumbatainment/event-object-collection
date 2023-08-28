@@ -19,5 +19,8 @@
             "name": "weedus",
             "email": "b.czopp@gmx.net"
         }
-    ]
+    ],
+    "scripts": {
+        "test:unit": "APP_ENV=test vendor/bin/phpunit --colors=always --bootstrap=vendor/autoload.php tests/Unit"
+    }
 }
